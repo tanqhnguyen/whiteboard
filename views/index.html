@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Whiteboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+  
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div id="page" ng-cloak ng-controller="MainController as controller">
+  <div class="header">
+    <div class="title">Whiteboard</div>
+  </div>
+  <div drawingboard color="controller.color" mouse-down="controller.onMouseDown(x,y)" mouse-move="controller.onMouseMove(x,y)" mouse-up="controller.onMouseUp()" ready="controller.onBoardReady(canvas)"></div>
+</div> 
+  
+  <script type="text/javascript" src="/faye/client.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.1/angular.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.1/angular-resource.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      define('jquery', function(){
+        return $;
+      });
+
+      define('angular', function(){
+        return angular;
+      });
+
+      define('Faye', function(){
+        return Faye;
+      });
+      
+      var configs = {
+
+      };
+      
+      configs['deps'] = ['main'];
+      configs['baseUrl'] = '/js';
+      require.config(configs);         
+    });
+  </script>
+
+</body>
+</html>
